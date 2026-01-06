@@ -1,78 +1,84 @@
 ## EEB611A-final-project
-#Advanced AIoT Fire Patrol Robot 
+Advanced AIoT Fire Patrol Robot
 
-  An autonomous patrol robot built with ROS Noetic and TurtleBot3. This system integrates LiDAR for obstacle avoidance and Computer Vision (OpenCV) for real-time fire detection. It features a Finite State Machine (FSM) for managing autonomous behaviors, including         simulated extinguishing, evidence logging, and remote interaction.
+An autonomous patrol robot system built with ROS Noetic and TurtleBot3. This project integrates LiDAR for obstacle avoidance and Computer Vision (OpenCV) for real-time fire detection. It features a Finite State Machine (FSM) to manage autonomous behaviors, including simulated extinguishing, automated evidence logging, and remote operator interaction.
 
-##Key Features
+Key Features
 
- 1. Autonomous Patrol: Navigates the environment while avoiding obstacles using LiDAR sensor fusion.
+Autonomous Patrol: Navigates the environment while avoiding obstacles using LiDAR sensor fusion logic.
 
- 2. Fire Detection: Uses HSV color thresholding to detect thermal anomalies (red objects).
- 
- 3. Active Response: Performs a "wiggling" maneuver to simulate extinguishing upon detection.
+Fire Detection: Utilizes HSV color thresholding to detect thermal anomalies (simulated by red objects).
 
- 4. Auto-Evidence Logging: Automatically saves timestamped images and updates a mission log when a hazard is found.
+Active Response: Performs a "wiggling" maneuver to simulate an extinguishing action upon detection.
 
- 5. Smart Escape: Implements a remote "RESUME" command with a blind-turn maneuver to prevent re-detection loops.
+Auto-Evidence Logging: Automatically saves timestamped screenshots and updates a mission log file when a hazard is detected.
 
-#Prerequisites
+Smart Escape Mechanism: Implements a remote "RESUME" command that triggers a blind-turn maneuver to prevent re-detection loops.
 
- OS: Ubuntu 20.04 (LTS) / Windows Subsystem for Linux (WSL2)
+Prerequisites
 
- ROS Distro: Noetic Ninjemys
+Operating System: Ubuntu 20.04 (LTS) or Windows Subsystem for Linux (WSL2)
 
- Hardware/Sim: TurtleBot3 Waffle Pi (Gazebo Simulation)
+ROS Distribution: Noetic Ninjemys
 
- Python Dependencies:
+Simulation Platform: Gazebo
 
-  sudo apt-get install ros-noetic-cv-bridge ros-noetic-opencv-apps
-  pip install opencv-python numpy
+Hardware Model: TurtleBot3 Waffle Pi
 
+Python Dependencies:
 
-#Installation
-
-  Clone the repository:
-
-   cd ~/catkin_ws/src
-   git clone <YOUR_GITHUB_REPO_URL_HERE>
+sudo apt-get install ros-noetic-cv-bridge ros-noetic-opencv-apps
+pip install opencv-python numpy
 
 
-(Note: Replace <YOUR_GITHUB_REPO_URL_HERE> with your actual link)
+Installation
 
-#Build the workspace:
+Clone the repository:
 
-  cd ~/catkin_ws
-  catkin_make
-  source devel/setup.bash
-
-
-#How to Run
-
- Launch Gazebo Simulation:
-
-  export TURTLEBOT3_MODEL=waffle_pi
-  roslaunch turtlebot3_gazebo turtlebot3_world.launch
+cd ~/catkin_ws/src
+git clone <YOUR_GITHUB_REPO_URL_HERE>
 
 
- Run the Fire Patrol Node:
+(Note: Replace <YOUR_GITHUB_REPO_URL_HERE> with your actual repository link)
 
-  # Make sure to source the environment first
-  source ~/catkin_ws/devel/setup.bash
+Build the workspace:
 
-  # Run the main program
-  rosrun fire_patrol fire_patrol.py
-
-
-  Remote Control (Reset Robot):
-  When the robot enters "WAITING" mode after extinguishing a fire, open a new terminal and send the following command to resume patrol:
-
-  rostopic pub -1 /control_center std_msgs/String "data: 'RESUME'"
+cd ~/catkin_ws
+catkin_make
+source devel/setup.bash
 
 
-#Project Structure
+How to Run
 
-  src/final_project_v5.py: Main logic node (FSM, Vision, Navigation).
+1. Launch Simulation Environment
 
-  mission_log.txt: Log file recording detection events (generated automatically).
+Start Gazebo with the Waffle Pi model (required for the camera):
 
-  evidence_*.jpg: Saved screenshots of detected hazards (generated automatically).
+export TURTLEBOT3_MODEL=waffle_pi
+roslaunch turtlebot3_gazebo turtlebot3_world.launch
+
+
+2. Run the Fire Patrol Node
+
+Open a new terminal and execute the main program:
+
+source ~/catkin_ws/devel/setup.bash
+rosrun fire_patrol final_project_v5.py
+
+
+3. Remote Control (Reset & Escape)
+
+When the robot extinguishes a fire and enters "WAITING" mode, you can command it to resume patrolling. Open a new terminal and send:
+
+rostopic pub -1 /control_center std_msgs/String "data: 'RESUME'"
+
+
+The robot will perform a 180-degree turn to avoid the hazard and continue its patrol.
+
+Project Structure
+
+src/final_project_v5.py: The main ROS node containing FSM, Vision, and Navigation logic.
+
+mission_log.txt: Automatically generated log file recording detection events.
+
+evidence_*.jpg: Automatically saved screenshots of detected hazards.
