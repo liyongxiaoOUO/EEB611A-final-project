@@ -3,7 +3,7 @@
 
   An autonomous patrol robot built with ROS Noetic and TurtleBot3. This system integrates LiDAR for obstacle avoidance and Computer Vision (OpenCV) for real-time fire detection. It features a Finite State Machine (FSM) for managing autonomous behaviors, including         simulated extinguishing, evidence logging, and remote interaction.
 
-#Key Features
+##Key Features
 
  1. Autonomous Patrol: Navigates the environment while avoiding obstacles using LiDAR sensor fusion.
 
