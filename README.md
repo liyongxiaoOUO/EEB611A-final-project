@@ -1,21 +1,21 @@
-## EEB611A-final-project
-# Advanced AIoT Fire Patrol Robot
+# EEB611A-final-project
+## Advanced AIoT Fire Patrol Robot
 
 An autonomous patrol robot system built with ROS Noetic and TurtleBot3. This project integrates LiDAR for obstacle avoidance and Computer Vision (OpenCV) for real-time fire detection. It features a Finite State Machine (FSM) to manage autonomous behaviors, including simulated extinguishing, automated evidence logging, and remote operator interaction.
 
-Key Features
+## Key Features
 
-Autonomous Patrol: Navigates the environment while avoiding obstacles using LiDAR sensor fusion logic.
+1. Autonomous Patrol: Navigates the environment while avoiding obstacles using LiDAR sensor fusion logic.
 
-Fire Detection: Utilizes HSV color thresholding to detect thermal anomalies (simulated by red objects).
+2. Fire Detection: Utilizes HSV color thresholding to detect thermal anomalies (simulated by red objects).
 
-Active Response: Performs a "wiggling" maneuver to simulate an extinguishing action upon detection.
+3. Active Response: Performs a "wiggling" maneuver to simulate an extinguishing action upon detection.
 
-Auto-Evidence Logging: Automatically saves timestamped screenshots and updates a mission log file when a hazard is detected.
+4. Auto-Evidence Logging: Automatically saves timestamped screenshots and updates a mission log file when a hazard is detected.
 
-Smart Escape Mechanism: Implements a remote "RESUME" command that triggers a blind-turn maneuver to prevent re-detection loops.
+5. Smart Escape Mechanism: Implements a remote "RESUME" command that triggers a blind-turn maneuver to prevent re-detection loops.
 
-Prerequisites
+## Prerequisites
 
 Operating System: Ubuntu 20.04 (LTS) or Windows Subsystem for Linux (WSL2)
 
@@ -31,7 +31,7 @@ sudo apt-get install ros-noetic-cv-bridge ros-noetic-opencv-apps
 pip install opencv-python numpy
 
 
-Installation
+## Installation
 
 Clone the repository:
 
@@ -48,7 +48,7 @@ catkin_make
 source devel/setup.bash
 
 
-How to Run
+## How to Run
 
 1. Launch Simulation Environment
 
@@ -75,7 +75,7 @@ rostopic pub -1 /control_center std_msgs/String "data: 'RESUME'"
 
 The robot will perform a 180-degree turn to avoid the hazard and continue its patrol.
 
-Project Structure
+## Project Structure
 
 src/final_project_v5.py: The main ROS node containing FSM, Vision, and Navigation logic.
 
