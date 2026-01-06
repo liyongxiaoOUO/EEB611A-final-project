@@ -1,0 +1,2 @@
+[20260106-230551] EVENT: Fire Extinguished. Evidence: /home/pierre/catkin_ws/src/hw7_fire_patrol/src/evidence_20260106-230551.jpg
+[20260106-230630] EVENT: Fire Extinguished. Evidence: /home/pierre/catkin_ws/src/hw7_fire_patrol/src/evidence_20260106-230630.jpg
