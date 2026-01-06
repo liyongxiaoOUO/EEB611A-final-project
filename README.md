@@ -1,5 +1,5 @@
 ## EEB611A-final-project
-##Advanced AIoT Fire Patrol Robot
+# Advanced AIoT Fire Patrol Robot
 
 An autonomous patrol robot system built with ROS Noetic and TurtleBot3. This project integrates LiDAR for obstacle avoidance and Computer Vision (OpenCV) for real-time fire detection. It features a Finite State Machine (FSM) to manage autonomous behaviors, including simulated extinguishing, automated evidence logging, and remote operator interaction.
 
